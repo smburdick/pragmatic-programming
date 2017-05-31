@@ -14,13 +14,13 @@ if len(sys.argv) == 2:
     cfile.write(sharedObject + ' = {\n')
     hfile.write('extern ' + sharedObject + ';\ntypedef enum {\n')
     if len(lines) > 1:
-        hfile.write(lines[1])
-        cfile.write(wrap(lines[1]))
+        hfile.write('\t' + lines[1])
+        cfile.write('\t' + wrap(lines[1]))
         stop = ',\n'
         for i in range(2, len(lines)):
             line = lines[i]
-            hfile.write(stop + line)
-            cfile.write(stop + wrap(line))
+            hfile.write(stop + '\t' + line)
+            cfile.write(stop + '\t' + wrap(line))
         hfile.write('\n} ' + typename_ups + ';\n')
         cfile.write('\n};\n')
 #
